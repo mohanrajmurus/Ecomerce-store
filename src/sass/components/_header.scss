@@ -1,6 +1,6 @@
 .container {
-    width: 100%;
-    background: $btn-bg;
+  width: 100%;
+  background: $btn-bg;
   .header {
     width: 80%;
     height: 10vh;
@@ -11,16 +11,16 @@
       display: none;
     }
     &--logo {
-        cursor: pointer;
-        &__text{
-            color: $bg-color;
-            font-size: 2.4rem;
-        }
+      cursor: pointer;
+      &__text {
+        color: $bg-color;
+        font-size: 2.4rem;
+      }
     }
-    &--searchbar{
+    &--searchbar {
       @include flex-b-c;
       position: relative;
-      input{
+      input {
         width: 600px;
         padding: 10px;
         border: none;
@@ -28,7 +28,7 @@
         border-radius: 10px;
         font-size: 1.1rem;
       }
-      .search--icon{
+      .search--icon {
         width: 30px;
         height: 30px;
         position: absolute;
@@ -36,8 +36,8 @@
         cursor: pointer;
       }
     }
-    &--profile{
-      .login{
+    &--profile {
+      .login {
         color: $btn-bg;
         font-size: 1.1rem;
         padding: 5px 40px;
@@ -47,49 +47,49 @@
       }
     }
     &--cart {
-        @include flex-b-c;
-        justify-content: flex-start;
-        position: relative;
-        margin-right: 30px;
-        .cart--icon{
-          width: 40px;
-          height: 40px;
-        }
-        span{
-          color: $bg-color;
-          font-size: 1.2rem;
-          position: absolute;
-          right: -20px;
-          top: -10px;
-          border-radius: 20px;
-          padding: 5px;
-          background-color: $text-color-head;
-        }
+      @include flex-b-c;
+      justify-content: flex-start;
+      position: relative;
+      margin-right: 30px;
+      .cart--icon {
+        width: 40px;
+        height: 40px;
+      }
+      span {
+        color: $bg-color;
+        font-size: 1.2rem;
+        position: absolute;
+        right: -20px;
+        top: -10px;
+        border-radius: 20px;
+        padding: 5px;
+        background-color: $text-color-head;
+      }
     }
   }
 }
 
-@media (max-width:980px) {
-  .container{
+@media (max-width: 980px) {
+  .container {
     width: 100%;
-    .header{
+    .header {
       width: 95%;
       margin: 0 auto;
       gap: 0;
       justify-content: space-around;
       position: relative;
-      &--menubar{
+      &--menubar {
         display: block;
         z-index: 2;
-        img{
+        img {
           width: 20px;
           height: 20px;
         }
       }
-      &--logo{
-       display: none;
+      &--logo {
+        display: none;
       }
-      &--logo--mobile{
+      &--logo--mobile {
         position: absolute;
         top: 0;
         left: -10px;
@@ -97,30 +97,30 @@
         height: 100vh;
         width: 70vw;
         z-index: 1;
-        h1{
+        h1 {
           padding: 20px;
           position: absolute;
           z-index: 1;
           top: 10vh;
         }
       }
-      &--searchbar{
+      &--searchbar {
         z-index: 0;
-        input{
+        input {
           width: 70vw;
           padding: 10px 5px;
         }
       }
-      &--profile{
+      &--profile {
         display: none;
       }
-      &--profile--mobile{
+      &--profile--mobile {
         position: absolute;
         top: 20vh;
         left: -10px;
         z-index: 1;
         padding: 20px;
-        .login{
+        .login {
           color: $btn-bg;
           font-size: 1.1rem;
           padding: 5px 40px;
@@ -129,13 +129,13 @@
           outline: none;
         }
       }
-      &--cart{
+      &--cart {
         margin-right: 0;
-        .cart--icon{
+        .cart--icon {
           width: 30px;
           height: 30px;
         }
-        span{
+        span {
           font-size: 0.8rem;
           top: -8px;
           right: -5px;
@@ -143,4 +143,4 @@
       }
     }
   }
-  }
+}
