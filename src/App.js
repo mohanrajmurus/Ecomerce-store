@@ -6,6 +6,12 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import Header from "./components/Header";
 import Electronics from "./components/categories/Electronics";
+import MensFashion from "./components/categories/MensFashion";
+import HomeAppliences from "./components/categories/HomeAppliences";
+import Grocery from './components/categories/Grocery';
+import HealthCare from "./components/categories/HealthCare";
+import AutoMotive from "./components/categories/AutoMotive";
+import WomensFashion from './components/categories/WomensFashion'
 function App() {
   const dispatch = useDispatch();
   /*   const products = useSelector(state => state.product);
@@ -28,6 +34,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/mobile" element={<Mobiles />}/>
         <Route path="/electronics" element={<Electronics />}/>
+        <Route path="/men'sfashion" element={<MensFashion />}/>
+        <Route path="/women'sfashion" element={<WomensFashion />}/>
+        <Route path="/healthcare" element={<HealthCare />}/>
+        <Route path="/homeappliences" element={<HomeAppliences />}/>
+        <Route path="/grocery" element={<Grocery />}/>
+        <Route path="/automotive" element={<AutoMotive />}/>
       </Routes>
     </div>
   );

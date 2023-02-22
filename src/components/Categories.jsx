@@ -2,7 +2,9 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import home_app from "../assets/icons/home_app.png";
 import electronics from "../assets/icons/electronics.png";
-import fashion from "../assets/icons/fashion.png";
+import menfashion from "../assets/icons/menfashion.png";
+import womenfashion from "../assets/icons/womenfashion.png";
+
 import groceries from "../assets/icons/groceries.png";
 import mobile from "../assets/icons/mobile.png";
 import Healthcare from "../assets/icons/Healthcare.png";
@@ -18,8 +20,12 @@ const categories = [
     text: "Electronics",
   },
   {
-    icon: fashion,
-    text: "Fashion",
+    icon: menfashion,
+    text: "Men's Fashion",
+  },
+  {
+    icon: womenfashion,
+    text: "Women's Fashion",
   },
   {
     icon: home_app,
