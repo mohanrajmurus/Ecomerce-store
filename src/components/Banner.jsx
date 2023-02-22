@@ -35,7 +35,7 @@ const Banner = () => {
     <div className="slider--container">
       {data.map((item, i) => {
         return (
-          <div className={slideIndex === i + 1 ? "slide-active" : "slide"}>
+          <div className={slideIndex === i + 1 ? "slide-active" : "slide"} key={i}>
             <img src={item.image} alt={item.title} />
           </div>
         );

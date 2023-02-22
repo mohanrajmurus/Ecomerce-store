@@ -2,9 +2,9 @@ import React from "react";
 import { useSelector } from "react-redux";
 import SingleProduct from "../SingleProduct";
 import FilterProduct from '../FilterProduct'
-const Mobiles = () => {
+const Electronics = () => {
   const products = useSelector((state) => state.product);
-  const mobiles = products.filter((item) => item.category === "smartphones");
+  const mobiles = products.filter((item) => item.category === "laptops" || item.category === "lighting");
   //console.log(mobiles);
   return (
     <div className="product--container">
@@ -18,4 +18,4 @@ const Mobiles = () => {
   );
 };
 
-export default Mobiles;
+export default Electronics;

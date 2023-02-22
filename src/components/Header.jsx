@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import cart from "../assets/icons/cart.svg";
+import carticon from "../assets/icons/cart.svg";
 import hamburger from "../assets/icons/hamburger.png";
 import close from "../assets/icons/close.png";
 import search from "../assets/icons/search.png";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 const Header = () => {
+  const cart = useSelector(state => state.cart)
   const [isOpen, setIsOpen] = useState(true);
   return (
     <div className="container">
@@ -36,8 +38,8 @@ const Header = () => {
           <button className="login">Login</button>
         </div>
         <div className="header--cart">
-          <img src={cart} alt="" className="cart--icon" />
-          <span className="cart--count">20</span>
+          <img src={carticon} alt="" className="cart--icon" />
+          <span className="cart--count">{cart.length}</span>
         </div>
       </header>
     </div>
