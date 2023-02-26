@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink,useNavigate } from "react-router-dom";
 import axios from 'axios';
+const url = process.env.REACT_APP_SERVER_URL;
 
 const Register = () => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const Register = () => {
    try {
      //prevent reload while submit form data
      e.preventDefault();
-     const res = await axios.post('http://localhost:4001/register',user);
+     const res = await axios.post(`${url}/register`,user);
      const data = await res.data;
      //console.log(data);
     if(data){

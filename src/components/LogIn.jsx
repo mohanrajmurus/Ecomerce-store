@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { NavLink ,useNavigate} from "react-router-dom";
 import axios from "axios";
 import {useDispatch} from 'react-redux'
-
+const url = process.env.REACT_APP_SERVER_URL;
+console.log(url);
 const LogIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ const LogIn = () => {
     //prevent reload while submit form data
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:4001/login", user);
+      const res = await axios.post(`${url}/login`, user);
     const data = await res.data;
     //console.log(data);
     //store user details to redux store
@@ -40,7 +41,11 @@ const LogIn = () => {
       password: "",
     });
     } catch (error) {
-      setErrorMessage(await error.response.data)
+      //console.log(error);
+      if(await error.response)
+        setErrorMessage(await error.response.data);
+      else
+        setErrorMessage('Server Error')
     }
   };
   return (
