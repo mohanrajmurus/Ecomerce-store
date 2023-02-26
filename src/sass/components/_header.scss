@@ -1,6 +1,7 @@
 .container {
   width: 100%;
   background: $btn-bg;
+  position: relative;
   .header {
     width: 80%;
     height: 10vh;
@@ -14,6 +15,7 @@
       cursor: pointer;
       &__text {
         color: $bg-color;
+        font-family: $font-stack-text;
         font-size: 2.4rem;
       }
     }
@@ -39,11 +41,13 @@
     &--profile {
       .login {
         color: $btn-bg;
+        font-family: $font-stack-head;
         font-size: 1.1rem;
         padding: 5px 40px;
         background: $bg-color;
         border: none;
         outline: none;
+        cursor: pointer;
       }
     }
     &--cart {
@@ -57,7 +61,7 @@
       }
       span {
         color: $bg-color;
-        font-size: 1.2rem;
+        font-size: 1rem;
         position: absolute;
         right: -20px;
         top: -10px;
@@ -67,7 +71,10 @@
       }
     }
   }
+
 }
+//cart container
+
 
 @media (max-width: 980px) {
   .container {

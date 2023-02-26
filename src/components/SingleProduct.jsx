@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 const SingleProduct = ({ prod }) => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  console.log(cart);
+  //console.log(cart);
   //console.log(prod);
   const orgPrice = Math.floor(prod.price) * 50;
   //console.log(orgPrice);
@@ -31,7 +31,7 @@ const SingleProduct = ({ prod }) => {
     <div className="product">
       <div className="product--details">
         <div className="product--details__image">
-          <img src={prod.images[0]} alt={prod.title} />
+          <img src={prod.images[0]} alt={prod.title}  className='image'/>
         </div>
         <div className="product--details__description">
           <span className="title">{prod.title}</span>

@@ -5,9 +5,18 @@ import close from "../assets/icons/close.png";
 import search from "../assets/icons/search.png";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Cart from "./Cart";
+import BillCal from "./BillCal";
+import Profile from './Profile'
 const Header = () => {
-  const cart = useSelector(state => state.cart)
+  const cart = useSelector((state) => state.cart);
+  const user = useSelector((state) => state.user);
+  //
+  //cart modal
+  const [cartOpen, setCartOpen] = useState(false);
+  //mobile menu bar
   const [isOpen, setIsOpen] = useState(true);
+
   return (
     <div className="container">
       <header className="header">
@@ -35,13 +44,39 @@ const Header = () => {
           <img src={search} alt="search-icon" className="search--icon" />
         </div>
         <div className={isOpen ? "header--profile" : "header--profile--mobile"}>
-          <button className="login">Login</button>
+          {Object.keys(user).length ? (
+            <Profile/>
+          ) : (
+            <NavLink to={"/login"}>
+              <button className="login">Login</button>
+            </NavLink>
+          )}
         </div>
-        <div className="header--cart">
+        <div className="header--cart" onClick={() => setCartOpen(!cartOpen)}>
           <img src={carticon} alt="" className="cart--icon" />
           <span className="cart--count">{cart.length}</span>
         </div>
       </header>
+      {cartOpen && (
+        <div className="cart--container">
+          <img
+            src={close}
+            alt="close"
+            onClick={() => setCartOpen(!cartOpen)}
+            className="closemenu"
+          />
+          {cart.length === 0 ? (
+            <p>No Items in Cart</p>
+          ) : (
+            <>
+              <div className="cart--page">
+                <Cart />
+                <BillCal />
+              </div>
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 };

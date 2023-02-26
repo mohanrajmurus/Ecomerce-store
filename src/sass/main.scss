@@ -1,6 +1,8 @@
+@import './abstract/variables'; //font and color variables
 @import './base/reset'; //reset browser default css
 @import './base/typography'; //font family
-@import './abstract/variables'; //font and color variables
+
 @import './abstract/mixins.scss'; //mixins
 @import './pages/home'; //Home Page style
 @import './components/product'; //product categories page style
+@import './components/login'; //login page style 

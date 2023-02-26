@@ -22,6 +22,7 @@ footer, header, nav, section, main{
 
 body{
     line-height: 1;
+    font-family: $font-stack-text;
 }
 
 ol, ul{
@@ -45,4 +46,7 @@ table{
 input{
     -webkit-appearance: none;
     border-radius: 0;
+}
+button{
+    cursor: pointer;
 }
