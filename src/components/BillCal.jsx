@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-const BillCal = () => {
+import {NavLink} from 'react-router-dom'
+const BillCal = ({onClick}) => {
   const cartData = useSelector((state) => state.cart);
   const [orgPrice, setOrgPrice] = useState(0);
   const [qty, setQty] = useState(0);
@@ -50,8 +51,10 @@ const BillCal = () => {
           <span>You will save ₹{orgPrice - discountPrice} on this order</span>
         </span>
       </div>
-      <div className="place--order">
-        <button>Place Order</button>
+      <div className="place--order" onClick={onClick}>
+        <NavLink to='placeorder'>
+          <button>Place Order</button>
+        </NavLink>
       </div>
     </div>
   );

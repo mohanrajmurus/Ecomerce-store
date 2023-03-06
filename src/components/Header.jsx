@@ -16,7 +16,9 @@ const Header = () => {
   const [cartOpen, setCartOpen] = useState(false);
   //mobile menu bar
   const [isOpen, setIsOpen] = useState(true);
-
+  const handleClick = () => {
+    setCartOpen(!cartOpen)
+  }
   return (
     <div className="container">
       <header className="header">
@@ -52,7 +54,7 @@ const Header = () => {
             </NavLink>
           )}
         </div>
-        <div className="header--cart" onClick={() => setCartOpen(!cartOpen)}>
+        <div className="header--cart" onClick={handleClick}>
           <img src={carticon} alt="" className="cart--icon" />
           <span className="cart--count">{cart.length}</span>
         </div>
@@ -62,7 +64,7 @@ const Header = () => {
           <img
             src={close}
             alt="close"
-            onClick={() => setCartOpen(!cartOpen)}
+            onClick={handleClick}
             className="closemenu"
           />
           {cart.length === 0 ? (
@@ -71,7 +73,7 @@ const Header = () => {
             <>
               <div className="cart--page">
                 <Cart />
-                <BillCal />
+                <BillCal onClick={handleClick}/>
               </div>
             </>
           )}
