@@ -52,8 +52,8 @@ const BillCal = ({onClick}) => {
         </span>
       </div>
       <div className="place--order" onClick={onClick}>
-        <NavLink to='placeorder'>
-          <button>Place Order</button>
+        <NavLink to='/placeorder'>
+          <button>Check Out</button>
         </NavLink>
       </div>
     </div>

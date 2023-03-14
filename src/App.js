@@ -14,7 +14,7 @@ import AutoMotive from "./components/categories/AutoMotive";
 import WomensFashion from './components/categories/WomensFashion'
 import LogIn from "./components/LogIn";
 import Register from './components/Register'
-import PlaceOrder from './pages/PlaceOrder'
+import CheckOut from './pages/CheckOut'
 import PrivateRouters from './components/PrivateRouters'
 function App() {
   const dispatch = useDispatch();
@@ -37,7 +37,7 @@ function App() {
       <Routes>
         <Route element={<PrivateRouters/>}>
           
-          <Route path="/placeorder" element={<PlaceOrder/>}/>
+          <Route path="/placeorder" element={<CheckOut/>}/>
         </Route>
         <Route path="/" element={<Home />} />
         <Route path="/mobile" element={<Mobiles />}/>
