@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import {ToastContainer,toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 const url = process.env.REACT_APP_SERVER_URL;
@@ -12,7 +14,6 @@ const Register = () => {
   });
   //error message while login
   const [errorMessage, setErrorMessage] = useState(undefined);
-  const [sucessMessage, setSucessMessage] = useState(undefined);
   const [emailVerified, setEmailVerified] = useState(false);
   const [otp, setOtp] = useState(undefined);
   const [getotp, setGetotp] = useState(false);
@@ -23,6 +24,28 @@ const Register = () => {
       [e.target.name]: e.target.value,
     });
   };
+  const notify = (msg,type) => {
+    if(type === 'err') toast.error(msg,{
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      })
+    if(type === 'sucess') toast.success(msg,{
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      })
+  }
   console.log(userotp);
   console.log(otp);
   const getOtp = async (e) => {
@@ -32,18 +55,23 @@ const Register = () => {
         email: user.email,
       });
       if (data) {
-        setSucessMessage("OTP sent to email");
+        notify('OTP Sent to Email','sucess')
         setOtp(data);
         setGetotp(true);
       }
     } catch (err) {
-      setErrorMessage(err.response.data);    }
+      notify(err.response.data,'err');
+        }
   };
   const verifyOtp = async (e) => {
     e.preventDefault();
     if (otp === Number(userotp)) {
       setEmailVerified(true);
-      setSucessMessage('Email Id verification sucessfull')
+      notify('Email Id verification sucessfull','sucess')
+      setGetotp(false)
+    }
+    else{
+      notify('OTP Invalid','err')
     }
   };
   const submitData = async (e) => {
@@ -55,6 +83,7 @@ const Register = () => {
         const res = await axios.post(`${url}/register`, user);
         const data = await res.data;
         //console.log(data);
+        notify('Account Create Sucessfull','sucess')
         if (data) {
           navigate("/login");
         }
@@ -65,19 +94,27 @@ const Register = () => {
           password: "",
         });
       } catch (error) {
-        setErrorMessage(error.response.data);
+        notify(error.response.data,'err');
       }
-    } else setErrorMessage("Email Not Verified");
+    } else notify("Email Not Verified",'war');
   };
   //console.log(user);
   return (
     <div className="signup--container">
       <div className="signup">
         <span className="title">Signup</span>
-        {errorMessage && <span className="error--message">{errorMessage}</span>}
-        {sucessMessage && (
-          <span className="sucess--message">{sucessMessage}</span>
-        )}
+        <ToastContainer 
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <form onSubmit={submitData}>
           <div className="name">
             <label htmlFor="name">Full Name</label>

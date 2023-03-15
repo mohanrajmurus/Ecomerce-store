@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { NavLink ,useNavigate} from "react-router-dom";
 import axios from "axios";
 import {useDispatch} from 'react-redux'
+
 const url = process.env.REACT_APP_SERVER_URL;
+
 console.log(url);
 const LogIn = () => {
   const dispatch = useDispatch();
@@ -35,6 +37,7 @@ const LogIn = () => {
       payload:data
     })
     navigate('/')
+    
     //reset values
     setUser({
       email: "",
@@ -50,6 +53,7 @@ const LogIn = () => {
   };
   return (
     <div className="login--container">
+      
       <div className="login">
         <span className="title">Login</span>
         {errorMessage && <span className="error--message">{errorMessage}</span>}
@@ -81,6 +85,7 @@ const LogIn = () => {
           <div className="button">
             <button type="submit">Login</button>
           </div>
+         
         </form>
         <div className="altnate">
           <span>Don't have account with us</span>
