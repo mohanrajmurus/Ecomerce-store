@@ -48,7 +48,7 @@ const ProductDetails = () => {
                   return (
                     <div
                       className={
-                        slideIndex === i + 1 ? "slide-action" : "slide"
+                        slideIndex === i + 1 ? "slide-active" : "slide"
                       }
                       key={i}
                     >

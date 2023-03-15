@@ -75,3 +75,33 @@
       }
     }
 }
+
+@media (max-width:768px) {
+  .single--product--container{
+    width: 90vw;
+    flex-direction: column-reverse;
+    .image--container{
+      width: 90vw;
+      .slide--container{
+        width: 100%;
+        .slide-active{
+          width: 100%;
+          img{
+            width: 100%;
+          }
+        }
+        .btn--slider{
+          width: 20px;
+          height: 20px;
+          img{
+            width: 16px;
+            height: 16px;
+          }
+        }
+        .next{
+          right: 10px;
+        }
+      }
+    }
+  }
+}
