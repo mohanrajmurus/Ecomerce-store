@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SingleProduct from "../SingleProduct";
 import FilterProduct from '../FilterProduct'
-import filterProduct from '../logic/filter'
+import filterProduct from '../logic/filter';
 const Mobiles = () => {
   const products = useSelector((state) => state.product);
   const mobiles = products.filter((item) => item.category === "smartphones");
@@ -29,7 +29,7 @@ const Mobiles = () => {
       <FilterProduct handleChange={handleChange} val={mode}/>
       <div className="products">
       {mobiles.map((item, i) => {
-        return <SingleProduct prod={item} key={i}/>;
+        return( <SingleProduct prod={item} category={'mobile'}key={i}/>);
       })}
       </div>
     </div>

@@ -37,7 +37,7 @@ const MensFashion = () => {
       <FilterProduct handleChange={handleChange} val={mode}/>
       <div className="products">
         {mobiles.map((item, i) => {
-          return <SingleProduct prod={item} key={i} />;
+          return <SingleProduct prod={item} key={i} category="men'sfashion"/>;
         })}
       </div>
     </div>

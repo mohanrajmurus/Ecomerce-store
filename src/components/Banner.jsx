@@ -1,26 +1,8 @@
 import React, { useState } from "react";
-import slide1 from "../assets/images/slider1.jpg";
-import slide2 from "../assets/images/slider2.png";
-import slide3 from "../assets/images/slider3.jpg";
+
 import BtnSlider from "./BtnSlider";
-const data = [
-  {
-    title: "Slide 1",
-    content: "",
-    image: slide1,
-  },
-  {
-    title: "Slide 2",
-    content: "",
-    image: slide2,
-  },
-  {
-    title: "Slide 3",
-    content: "",
-    image: slide3,
-  },
-];
-const Banner = () => {
+
+const Banner = ({data}) => {
   const [slideIndex, setSlideIndex] = useState(1);
   const nextSlide = () => {
     if (slideIndex === data.length) setSlideIndex(1);

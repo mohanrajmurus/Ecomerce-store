@@ -1,6 +1,7 @@
 import React from "react";
+import {Link} from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
-const SingleProduct = ({ prod }) => {
+const SingleProduct = ({ prod,category }) => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   //console.log(cart);
@@ -34,7 +35,7 @@ const SingleProduct = ({ prod }) => {
           <img src={prod.images[0]} alt={prod.title}  className='image'/>
         </div>
         <div className="product--details__description">
-          <span className="title">{prod.title}</span>
+          <Link to={`/${category}/${prod.id}`}><span className="title">{prod.title}</span></Link>
           <span className="ratings--stock">
             <span className="ratings">{prod.rating} ★</span>
             <span className="stock">Stock: {prod.stock}</span>

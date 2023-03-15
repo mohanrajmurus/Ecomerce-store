@@ -30,7 +30,7 @@ const Grocery = () => {
       <FilterProduct handleChange={handleChange} val={mode}/>
       <div className="products">
       {mobiles.map((item, i) => {
-        return <SingleProduct prod={item} key={i}/>;
+        return <SingleProduct prod={item} key={i} category="grocery"/>;
       })}
       </div>
     </div>

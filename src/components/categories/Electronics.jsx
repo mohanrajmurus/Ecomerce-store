@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SingleProduct from "../SingleProduct";
-import FilterProduct from '../FilterProduct'
-import filterProduct from '../logic/filter'
+import FilterProduct from "../FilterProduct";
+import filterProduct from "../logic/filter";
 
 const Electronics = () => {
   const products = useSelector((state) => state.product);
-  const mobiles = products.filter((item) => item.category === "laptops" || item.category === "lighting");
+  const mobiles = products.filter(
+    (item) => item.category === "laptops" || item.category === "lighting"
+  );
   //console.log(mobiles);
-  const {sort} = useSelector(state => state.filter)
+  const { sort } = useSelector((state) => state.filter);
 
   const dispatch = useDispatch();
-  const [mode, setMode] = useState('');
+  const [mode, setMode] = useState("");
   //console.log(mode);
   //console.log(mobiles);
 
@@ -19,18 +21,18 @@ const Electronics = () => {
   const handleChange = (e) => {
     setMode(e.target.value);
     dispatch({
-      type:'SORT_BY_PRICE',
-      payload:e.target.value
-    })
-  }
-  filterProduct(mobiles,sort);
+      type: "SORT_BY_PRICE",
+      payload: e.target.value,
+    });
+  };
+  filterProduct(mobiles, sort);
   return (
     <div className="product--container">
-      <FilterProduct handleChange={handleChange} val={mode}/>
+      <FilterProduct handleChange={handleChange} val={mode} />
       <div className="products">
-      {mobiles.map((item, i) => {
-        return <SingleProduct prod={item} key={i}/>;
-      })}
+        {mobiles.map((item, i) => {
+          return <SingleProduct prod={item} category={"electronics"} key={i} />;
+        })}
       </div>
     </div>
   );

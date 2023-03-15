@@ -1,0 +1,77 @@
+.single--product--container{
+  width: 90%;
+  margin: 10px auto;
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+    .image--container{
+      width: 40%;
+        .slide--container {
+            width: 100%;
+            position: relative;
+            .slide-active {
+              width: 100%;
+              height: 100%;
+              img {
+                width: 100%;
+                height: 100%;
+              }
+            }
+            .slide {
+              display: none;
+            }
+            .btn--slider {
+              width: 30px;
+              height: 30px;
+              background: $bg-color;
+              border-radius: 50%;
+              border: 1px solid rgba(34, 34, 34, 0.287);
+              @include flex-b-c;
+              justify-content: center;
+              position: absolute;
+              cursor: pointer;
+              img {
+                width: 25px;
+                height: 25px;
+              }
+            }
+            .active {
+              opacity: 1;
+            }
+            .next {
+              top: 50%;
+              opacity: 0.5;
+              right: 40px;
+              transform: translateY(-60%);
+            }
+            .prev {
+              top: 50%;
+              left: 10px;
+              opacity: 0.5;
+              transform: translateY(-60%);
+            }
+          }
+    }
+    .details--container{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      .title{
+        font-size: 2rem;
+        font-weight: bold;
+      }
+      .current--price{
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-right: 20px;
+      }
+      .price{
+        text-decoration: line-through;
+      }
+      .discount{
+        color: $btn-bg;
+        margin-left: 20px;
+      }
+    }
+}

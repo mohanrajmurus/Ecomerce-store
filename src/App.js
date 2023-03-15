@@ -16,6 +16,7 @@ import LogIn from "./components/LogIn";
 import Register from './components/Register'
 import CheckOut from './pages/CheckOut'
 import PrivateRouters from './components/PrivateRouters'
+import ProductDetails from './pages/ProductDetails'
 function App() {
   const dispatch = useDispatch();
   /*   const products = useSelector(state => state.product);
@@ -50,6 +51,15 @@ function App() {
         <Route path="/automotive" element={<AutoMotive />}/>
         <Route path="/login" element={<LogIn/>}/>
         <Route path="/register" element ={<Register />}/>
+        <Route path="/mobile/:id" element={<ProductDetails/>}/>
+        <Route path="/electronics/:id" element={<ProductDetails/>}/>
+        <Route path="/men'sfashion/:id" element={<ProductDetails/>}/>
+        <Route path="/women'sfashion/:id" element={<ProductDetails/>}/>
+        <Route path="/healthcare/:id" element={<ProductDetails/>}/>
+        <Route path="/homeappliences/:id" element={<ProductDetails/>}/>
+        <Route path="/grocery/:id" element={<ProductDetails/>}/>
+        <Route path="/automotive/:id" element={<ProductDetails/>}/>
+
       </Routes>
     </div>
   );
