@@ -27,7 +27,7 @@ const Register = () => {
   const notify = (msg,type) => {
     if(type === 'err') toast.error(msg,{
       position: "top-center",
-      autoClose: 5000,
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -37,7 +37,7 @@ const Register = () => {
       })
     if(type === 'sucess') toast.success(msg,{
       position: "top-center",
-      autoClose: 5000,
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -45,6 +45,16 @@ const Register = () => {
       progress: undefined,
       theme: "light",
       })
+      if(type === 'war') toast.warn(msg,{
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        })
   }
   console.log(userotp);
   console.log(otp);
@@ -105,7 +115,7 @@ const Register = () => {
         <span className="title">Signup</span>
         <ToastContainer 
           position="top-center"
-          autoClose={5000}
+          autoClose={3000}
           hideProgressBar={false}
           newestOnTop={false}
           closeOnClick
