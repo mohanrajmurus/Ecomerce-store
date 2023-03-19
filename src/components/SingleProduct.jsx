@@ -18,6 +18,7 @@ const SingleProduct = ({ prod,category }) => {
       type: "ADD_TO_CART",
       payload: prod,
     });
+    console.log(cart);
   };
 
   //remove the product from cart
@@ -35,7 +36,7 @@ const SingleProduct = ({ prod,category }) => {
           <img src={prod.images[0]} alt={prod.title}  className='image'/>
         </div>
         <div className="product--details__description">
-          <Link to={`/${category}/${prod.id}`}><span className="title">{prod.title}</span></Link>
+          <Link to={`/products/${prod.id}`}><span className="title">{prod.title}</span></Link>
           <span className="ratings--stock">
             <span className="ratings">{prod.rating} ★</span>
             <span className="stock">Stock: {prod.stock}</span>
@@ -50,13 +51,6 @@ const SingleProduct = ({ prod,category }) => {
           <span className="discount">{prod.discountPercentage} % off</span>
         </span>
         <span className="delivermode">Free Delivery</span>
-        <div className="cart--button">
-          {!cart.some((p) => p.id === prod.id) ? (
-            <button onClick={addCart} >Add to Cart</button>
-          ) : (
-            <button onClick={removeCart}className='remove--button'>Remove From Cart</button>
-          )}
-        </div>
       </div>
     </div>
   );

@@ -13,8 +13,6 @@ const LogOut = () => {
       type: "REMOVE_USER",
       payload: {},
     });
-    const res = await axios.put(`${url}/update/${user.email}`,cart);
-    console.log(await res.json());
    } catch (error) {
     console.error(error);
    }

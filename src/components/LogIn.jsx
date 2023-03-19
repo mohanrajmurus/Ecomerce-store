@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { NavLink ,useNavigate} from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
-import {useDispatch} from 'react-redux'
-
+import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const url = process.env.REACT_APP_SERVER_URL;
 
 console.log(url);
@@ -13,8 +14,8 @@ const LogIn = () => {
     email: "",
     password: "",
   });
+  const products = useSelector((state) => state.product);
   //error message while login
-  const [errorMessage,setErrorMessage] = useState(undefined);
   //get input from user
   const handleChange = (e) => {
     setUser({
@@ -22,41 +23,88 @@ const LogIn = () => {
       [e.target.name]: e.target.value,
     });
   };
-
+  const notify = (msg, type) => {
+    if (type === "err")
+      toast.error(msg, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      if (type === "sucess")
+      toast.success(msg, {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+  };
   const submitData = async (e) => {
     //prevent reload while submit form data
     e.preventDefault();
     try {
       const res = await axios.post(`${url}/login`, user);
-    const data = await res.data;
-    //console.log(data);
-    //store user details to redux store
-    //s
-    dispatch({
-      type:'SET_USER',
-      payload:data
-    })
-    navigate('/')
-    
-    //reset values
-    setUser({
-      email: "",
-      password: "",
-    });
+      const data = await res.data;
+      //console.log(data);
+      //store user details to redux store
+      //s
+      //console.log(data.cart)
+      dispatch({
+        type: "SET_USER",
+        payload: data,
+      });
+      if (data.cart) {
+        data.cart.map((id) => {
+          return products.filter((item) =>
+            item.id === id
+              ? dispatch({
+                  type: "ADD_TO_CART",
+                  payload: item,
+                })
+              : null
+          );
+        });
+        //console.log(cart);
+      }
+      notify('Sucessfully Loggedin','sucess')
+     setTimeout(()=> navigate("/"),2000)
+      ;
+
+      //reset values
+      setUser({
+        email: "",
+        password: "",
+      });
     } catch (error) {
       //console.log(error);
-      if(await error.response)
-        setErrorMessage(await error.response.data);
-      else
-        setErrorMessage('Server Error')
+      if (await error.response) notify(error.response.data, "err");
+      else notify("Server Error",'err');
     }
   };
   return (
     <div className="login--container">
-      
       <div className="login">
         <span className="title">Login</span>
-        {errorMessage && <span className="error--message">{errorMessage}</span>}
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <form onSubmit={submitData}>
           <div className="email">
             <label htmlFor="email">Email</label>
@@ -85,7 +133,6 @@ const LogIn = () => {
           <div className="button">
             <button type="submit">Login</button>
           </div>
-         
         </form>
         <div className="altnate">
           <span>Don't have account with us</span>

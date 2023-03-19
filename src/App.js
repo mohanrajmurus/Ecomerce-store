@@ -51,14 +51,14 @@ function App() {
         <Route path="/automotive" element={<AutoMotive />}/>
         <Route path="/login" element={<LogIn/>}/>
         <Route path="/register" element ={<Register />}/>
-        <Route path="/mobile/:id" element={<ProductDetails/>}/>
-        <Route path="/electronics/:id" element={<ProductDetails/>}/>
+        <Route path="/products/:id" element={<ProductDetails/>}/>
+        {/* <Route path="/electronics/:id" element={<ProductDetails/>}/>
         <Route path="/men'sfashion/:id" element={<ProductDetails/>}/>
         <Route path="/women'sfashion/:id" element={<ProductDetails/>}/>
         <Route path="/healthcare/:id" element={<ProductDetails/>}/>
         <Route path="/homeappliences/:id" element={<ProductDetails/>}/>
         <Route path="/grocery/:id" element={<ProductDetails/>}/>
-        <Route path="/automotive/:id" element={<ProductDetails/>}/>
+        <Route path="/automotive/:id" element={<ProductDetails/>}/> */}
 
       </Routes>
     </div>
