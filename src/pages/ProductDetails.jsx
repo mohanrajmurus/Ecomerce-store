@@ -4,6 +4,9 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import BtnSlider from "../components/BtnSlider";
 import ErrorRoutes from "../components/ErrorRoutes";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const url = process.env.REACT_APP_SERVER_URL;
 const ProductDetails = () => {
   const products = useSelector((state) => state.product);
@@ -29,9 +32,15 @@ const ProductDetails = () => {
     //console.log(id);
     if (Object.keys(user).length) {
       try {
-        const { data } = await axios.put(`${url}/cart/${user._id}`, {
-          id: item.id,
-        });
+        const { data } = await toast.promise(
+          axios.put(`${url}/cart/${user._id}`, {
+            id: item.id,
+          }),{
+            pending: ' Adding to cart',
+        success: 'Sucessfully Added 👌',
+        error: 'Failed 🤯'
+          }
+        );
         if (data) {
           dispatch({
             type: "SET_USER",
@@ -52,9 +61,11 @@ const ProductDetails = () => {
     //console.log(id);
     if (Object.keys(user).length) {
       try {
-        const { data } = await axios.put(`${url}/remove/${user._id}`, {
+        const { data } = await toast.promise(axios.put(`${url}/remove/${user._id}`, {
           id: item.id,
-        });
+        }),{ pending: ' Removing to cart',
+        success: 'Sucessfully Removed 👌',
+        error: 'Failed 🤯'});
         console.log(data);
         if (data) {
           dispatch({
@@ -83,6 +94,18 @@ const ProductDetails = () => {
 
           return (
             <div className="single--product--container" key={i}>
+              <ToastContainer
+                position="top-left"
+                autoClose={1000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+              />
               <div className="image--container">
                 <div className="slide--container">
                   {item.images.map((image, i) => {
@@ -108,7 +131,9 @@ const ProductDetails = () => {
                 </div>
                 <div className="buttons">
                   {!cart.some((p) => p.id === item.id) ? (
-                    <button onClick={() => addCart(item)} className='add--cart'>Add to Cart</button>
+                    <button onClick={() => addCart(item)} className="add--cart">
+                      Add to Cart
+                    </button>
                   ) : (
                     <button
                       onClick={() => removeCart(item)}

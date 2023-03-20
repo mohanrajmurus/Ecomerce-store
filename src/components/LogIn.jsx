@@ -35,7 +35,7 @@ const LogIn = () => {
         progress: undefined,
         theme: "light",
       });
-      if (type === "sucess")
+    if (type === "sucess")
       toast.success(msg, {
         position: "top-center",
         autoClose: 2000,
@@ -51,7 +51,11 @@ const LogIn = () => {
     //prevent reload while submit form data
     e.preventDefault();
     try {
-      const res = await axios.post(`${url}/login`, user);
+      const res = await toast.promise(axios.post(`${url}/login`, user), {
+        pending: " Loading",
+        success: "Sucessfully loggedin 👌",
+        error: "Login failed 🤯",
+      });
       const data = await res.data;
       //console.log(data);
       //store user details to redux store
@@ -74,9 +78,8 @@ const LogIn = () => {
         });
         //console.log(cart);
       }
-      notify('Sucessfully Loggedin','sucess')
-     setTimeout(()=> navigate("/"),2000)
-      ;
+      // notify('Sucessfully Loggedin','sucess')
+      setTimeout(() => navigate("/"), 2000);
 
       //reset values
       setUser({
@@ -86,7 +89,7 @@ const LogIn = () => {
     } catch (error) {
       //console.log(error);
       if (await error.response) notify(error.response.data, "err");
-      else notify("Server Error",'err');
+      else notify("Server Error", "err");
     }
   };
   return (

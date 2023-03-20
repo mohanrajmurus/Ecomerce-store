@@ -11,9 +11,9 @@ const Register = () => {
     fullName: "",
     email: "",
     password: "",
+    mobileNum:''
   });
   //error message while login
-  const [errorMessage, setErrorMessage] = useState(undefined);
   const [emailVerified, setEmailVerified] = useState(false);
   const [otp, setOtp] = useState(undefined);
   const [getotp, setGetotp] = useState(false);
@@ -64,11 +64,15 @@ const Register = () => {
   const getOtp = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(`${url}/emailverify`, {
+      const { data } = await toast.promise(axios.post(`${url}/emailverify`, {
         email: user.email,
+      }),{
+        pending: ' sending OTP',
+        success: 'OTP Sent 👌',
+        error: 'Failed 🤯'
       });
       if (data) {
-        notify("OTP Sent to Email", "sucess");
+        //notify("OTP Sent to Email", "sucess");
         setOtp(data);
         setGetotp(true);
       }
@@ -92,12 +96,18 @@ const Register = () => {
       try {
         //prevent reload while submit form data
 
-        const res = await axios.post(`${url}/register`, user);
+        const res = await toast.promise(axios.post(`${url}/register`, user),{
+          pending: 'Loading',
+        success: 'Sucessfully Registred 👌',
+        error: 'Signup failed 🤯'
+        });
         const data = await res.data;
         //console.log(data);
-        notify("Account Create Sucessfull", "sucess");
+        //notify("Account Create Sucessfull", "sucess");
         if (data) {
-          navigate("/login");
+          setTimeout(() => {
+            navigate("/login")
+          }, 3000);;
         }
         //reset values
         setUser({
@@ -168,7 +178,19 @@ const Register = () => {
                 {emailVerified ? "verified" : "Verify"}
               </button>
             </div>
-          ) : null}
+          ) : <></>}
+          <div className="mobile">
+            <label htmlFor="mobile">Mobile Number</label>
+            <input
+              type="text"
+              name="mobileNum"
+              id="mobile"
+              placeholder="mobile number"
+              required
+              onChange={handleChange}
+              value={user.mobileNum}
+            />
+          </div>
           <div className="password">
             <label htmlFor="password">Password</label>
             <input

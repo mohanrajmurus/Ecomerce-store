@@ -1,24 +1,53 @@
 import React from "react";
-import { useDispatch,useSelector } from "react-redux";
-import axios from 'axios'
-import { json } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const LogOut = () => {
   const dispatch = useDispatch();
-  const cart = useSelector(state=>state.cart)
-  const user = useSelector(state=>state.user)
-  const url = process.env.REACT_APP_SERVER_URL;
-  const handleLogOut = async () => {
-   try {
-    dispatch({
-      type: "REMOVE_USER",
-      payload: {},
-    });
-   } catch (error) {
-    console.error(error);
-   }
+const notify = (msg) => {
+  toast.success(msg,{
+    position: "top-center",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  })
+}
+  const handleLogOut = () => {
+    try {
 
+      dispatch({
+        type: "REMOVE_USER",
+        payload: {},
+      });
+      dispatch({
+        type: "CLEAR_CART",
+      });
+      notify('SignOut Sucessfully')
+    } catch (error) {
+      console.error(error);
+    }
   };
-  return <div onClick={handleLogOut}>LogOut</div>;
+  return (
+    <>
+      <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+      <div onClick={handleLogOut}>LogOut</div>
+    </>
+  );
 };
 
 export default LogOut;
