@@ -106,9 +106,9 @@ const ProductDetails = () => {
                     moveSlide={() => prevSlide(item.images.length)}
                   />
                 </div>
-                <div>
+                <div className="buttons">
                   {!cart.some((p) => p.id === item.id) ? (
-                    <button onClick={() => addCart(item)}>Add to Cart</button>
+                    <button onClick={() => addCart(item)} className='add--cart'>Add to Cart</button>
                   ) : (
                     <button
                       onClick={() => removeCart(item)}
@@ -117,6 +117,7 @@ const ProductDetails = () => {
                       Remove From Cart
                     </button>
                   )}
+                  <button>Buy Now</button>
                 </div>
               </div>
               <div className="details--container">
@@ -133,7 +134,8 @@ const ProductDetails = () => {
                 <div>
                   <span>Ratings:{item.rating}</span>
                 </div>
-                <div>
+                <div className="description">
+                  <h1>Product description:</h1>
                   <p>{item.description}</p>
                 </div>
               </div>

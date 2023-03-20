@@ -32,7 +32,7 @@ const Header = () => {
             <img src={close} alt="menubar" />
           )}
         </div>
-        <div className={isOpen ? "header--logo" : "header--logo--mobile"}>
+        <div className={isOpen ? "header--logo" : "header--logo--mobile"} onClick={()=>setIsOpen(true)}>
           <NavLink to={"/"}>
             <h1 className="header--logo__text">Store</h1>
           </NavLink>
@@ -45,7 +45,7 @@ const Header = () => {
           />
           <img src={search} alt="search-icon" className="search--icon" />
         </div>
-        <div className={isOpen ? "header--profile" : "header--profile--mobile"}>
+        <div className={isOpen ? "header--profile" : "header--profile--mobile"} onClick={()=>setIsOpen(true)}>
           {Object.keys(user).length ? (
             <Profile/>
           ) : (

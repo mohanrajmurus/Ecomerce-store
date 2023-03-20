@@ -41,7 +41,6 @@ const SingleProduct = ({ prod,category }) => {
             <span className="ratings">{prod.rating} ★</span>
             <span className="stock">Stock: {prod.stock}</span>
           </span>
-          <span className="description">{prod.description}</span>
         </div>
       </div>
       <div className="product--price">

@@ -6,7 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const url = process.env.REACT_APP_SERVER_URL;
 
-console.log(url);
+//console.log(url);
 const LogIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();

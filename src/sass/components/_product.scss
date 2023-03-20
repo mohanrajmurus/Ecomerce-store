@@ -26,8 +26,8 @@
         gap: 10px;
         &__image {
           img {
-            width: 200px;
-            height: 200px;
+            width: 100px;
+            height: 100px;
             object-fit: cover;
             mix-blend-mode: multiply;
           }
@@ -39,6 +39,9 @@
           justify-content: flex-start;
           align-items: flex-start;
           gap: 10px;
+          a{
+            color: inherit;
+          }
           .title{
             font-family: $font-stack-head;
             font-size: 1.3rem;

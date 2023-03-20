@@ -19,7 +19,7 @@ const SingleCartData = ({ item }) => {
         const { data } = await axios.put(`${url}/remove/${user._id}`, {
           id: item.id,
         });
-        console.log(data);
+        //console.log(data);
         if (data) {
           dispatch({
             type: "SET_USER",
