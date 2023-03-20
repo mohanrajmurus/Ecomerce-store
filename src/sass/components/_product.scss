@@ -71,6 +71,7 @@
         }
       }
       &--price{
+        width: 30%;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -150,7 +151,7 @@
         }
         &--price{
           .current--price{
-            font-size: 1.1rem;
+            font-size: 1rem;
           }
           .original--price{
             display: none;
