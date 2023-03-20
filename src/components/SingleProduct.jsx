@@ -1,9 +1,6 @@
 import React from "react";
 import {Link} from 'react-router-dom'
-import { useDispatch, useSelector } from "react-redux";
 const SingleProduct = ({ prod,category }) => {
-  const cart = useSelector((state) => state.cart);
-  const dispatch = useDispatch();
   //console.log(cart);
   //console.log(prod);
   const orgPrice = Math.floor(prod.price) * 50;
@@ -11,23 +8,6 @@ const SingleProduct = ({ prod,category }) => {
   const curprice = Math.floor(
     orgPrice - (orgPrice * prod.discountPercentage) / 100
   );
-
-  //add product to cart
-  const addCart = () => {
-    dispatch({
-      type: "ADD_TO_CART",
-      payload: prod,
-    });
-    console.log(cart);
-  };
-
-  //remove the product from cart
-  const removeCart = () => {
-    dispatch({
-      type: "REMOVE_FROM_CART",
-      payload: prod,
-    });
-  };
   //console.log(curprice);
   return (
     <div className="product">

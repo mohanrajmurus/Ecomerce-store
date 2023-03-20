@@ -17,6 +17,7 @@ import Register from './components/Register'
 import CheckOut from './pages/CheckOut'
 import PrivateRouters from './components/PrivateRouters'
 import ProductDetails from './pages/ProductDetails'
+import ErrorRoutes from "./components/ErrorRoutes";
 function App() {
   const dispatch = useDispatch();
   /*   const products = useSelector(state => state.product);
@@ -52,6 +53,7 @@ function App() {
         <Route path="/login" element={<LogIn/>}/>
         <Route path="/register" element ={<Register />}/>
         <Route path="/products/:id" element={<ProductDetails/>}/>
+        <Route path="*" element={<ErrorRoutes/>}/>
         {/* <Route path="/electronics/:id" element={<ProductDetails/>}/>
         <Route path="/men'sfashion/:id" element={<ProductDetails/>}/>
         <Route path="/women'sfashion/:id" element={<ProductDetails/>}/>

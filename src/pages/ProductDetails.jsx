@@ -11,7 +11,7 @@ const ProductDetails = () => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const { id } = useParams();
-
+  //console.log(id);
   const product = useSelector((state) => state.product);
   const singleProduct = product.filter((item) => item.id === Number(id));
   const [slideIndex, setSlideIndex] = useState(1);
@@ -25,7 +25,7 @@ const ProductDetails = () => {
     } else setSlideIndex(slideIndex - 1);
   };
   const addCart = async (item) => {
-    const id = item.id;
+    //const id = item.id;
     //console.log(id);
     if (Object.keys(user).length) {
       try {
