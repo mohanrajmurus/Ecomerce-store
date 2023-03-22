@@ -45,12 +45,12 @@ const Header = () => {
           />
           <img src={search} alt="search-icon" className="search--icon" />
         </div>
-        <div className={isOpen ? "header--profile" : "header--profile--mobile"} onClick={()=>setIsOpen(true)}>
+        <div className={isOpen ? "header--profile" : "header--profile--mobile"} >
           {Object.keys(user).length ? (
-            <Profile/>
+            <Profile setIsOpen={setIsOpen}/>
           ) : (
             <NavLink to={"/login"}>
-              <button className="login">Login</button>
+              <button className="login" onClick={()=>setIsOpen(true)}>Login</button>
             </NavLink>
           )}
         </div>

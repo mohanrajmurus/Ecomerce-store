@@ -35,17 +35,6 @@ const LogIn = () => {
         progress: undefined,
         theme: "light",
       });
-    if (type === "sucess")
-      toast.success(msg, {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
   };
   const submitData = async (e) => {
     //prevent reload while submit form data
