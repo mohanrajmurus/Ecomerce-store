@@ -27,7 +27,7 @@ const LogIn = () => {
     if (type === "err")
       toast.error(msg, {
         position: "top-center",
-        autoClose: 3000,
+        autoClose: 1000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -80,6 +80,7 @@ const LogIn = () => {
       if (await error.response) notify(error.response.data, "err");
       else notify("Server Error", "err");
     }
+    toast.clearWaitingQueue()
   };
   return (
     <div className="login--container">
@@ -87,8 +88,8 @@ const LogIn = () => {
         <span className="title">Login</span>
         <ToastContainer
           position="top-center"
-          autoClose={3000}
-          hideProgressBar={false}
+          autoClose={1000}
+          hideProgressBar={true}
           newestOnTop={false}
           closeOnClick
           rtl={false}

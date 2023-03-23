@@ -14,10 +14,10 @@ import AutoMotive from "./components/categories/AutoMotive";
 import WomensFashion from './components/categories/WomensFashion'
 import LogIn from "./components/LogIn";
 import Register from './components/Register'
-import CheckOut from './pages/CheckOut'
 import PrivateRouters from './components/PrivateRouters'
 import ProductDetails from './pages/ProductDetails'
 import ErrorRoutes from "./components/ErrorRoutes";
+import CheckOutPage from "./pages/CheckOutPage";
 function App() {
   const dispatch = useDispatch();
   /*   const products = useSelector(state => state.product);
@@ -39,7 +39,7 @@ function App() {
       <Routes>
         <Route element={<PrivateRouters/>}>
           
-          <Route path="/placeorder" element={<CheckOut/>}/>
+          <Route path="/placeorder" element={<CheckOutPage/>}/>
         </Route>
         <Route path="/" element={<Home />} />
         <Route path="/mobile" element={<Mobiles />}/>

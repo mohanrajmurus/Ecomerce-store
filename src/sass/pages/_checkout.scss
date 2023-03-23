@@ -1,0 +1,61 @@
+.checkout--container{
+    width: 90%;
+    margin: 20px auto;
+    .address--container{
+        .basic--details{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            span{
+                font-size: 1.2rem;
+                color: $text-color-head;
+                font-weight: 600;
+            }
+        }
+        .address{
+            margin-top: 30px;
+            .add--btn{
+            background: $btn-bg;
+            color: $bg-color;
+            font-size: 0.9rem;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 0px;
+            cursor: pointer;
+            }
+            .new-address{
+                margin-top: 20px;
+                form{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 20px;
+                    input{
+                        width: 300px;
+                        font-size: 1.1rem;
+                        padding: 10px;
+                        outline: none;
+                    }
+                    button{
+                        width: 300px;
+                        background: $btn-bg;
+                        color: $bg-color;
+                        font-size: 0.9rem;
+                        padding: 10px 20px;
+                        border: none;
+                        border-radius: 0px;
+                        cursor: pointer; 
+                    }
+                }
+            }
+            .address--details{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    }
+}
