@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, json, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import BtnSlider from "../components/BtnSlider";
 import ErrorRoutes from "../components/ErrorRoutes";
@@ -55,6 +55,7 @@ const ProductDetails = () => {
       type: "ADD_TO_CART",
       payload: item,
     });
+    //sessionStorage.setItem('cart',JSON.stringify(cart))
   };
   const removeCart = async (item) => {
     //const id = item.id
@@ -131,18 +132,20 @@ const ProductDetails = () => {
                 </div>
                 <div className="buttons">
                   {!cart.some((p) => p.id === item.id) ? (
-                    <button onClick={() => addCart(item)} className="add--cart">
+                    <button onClick={() => addCart(item)} className="add--cart btn">
                       Add to Cart
                     </button>
                   ) : (
                     <button
                       onClick={() => removeCart(item)}
-                      className="remove--button"
+                      className="remove--button btn"
                     >
                       Remove From Cart
                     </button>
                   )}
-                  <button>Buy Now</button>
+                  <Link to={'/placeorder'}>
+                    <button className="btn" onClick={() => addCart(item)}>Buy Now</button>
+                  </Link>
                 </div>
               </div>
               <div className="details--container">

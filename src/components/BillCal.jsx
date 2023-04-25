@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import {NavLink} from 'react-router-dom'
+import {NavLink,useParams} from 'react-router-dom'
 const BillCal = ({onClick}) => {
   const cartData = useSelector((state) => state.cart);
   const [orgPrice, setOrgPrice] = useState(0);
   const [qty, setQty] = useState(0);
   const [discountPrice, setDiscountPrice] = useState(0);
+  const path = window.location.pathname
   useEffect(() => {
     const currPrice = cartData.reduce(
       (acc, curr) =>
@@ -53,7 +54,7 @@ const BillCal = ({onClick}) => {
       </div>
       <div className="place--order" onClick={onClick}>
         <NavLink to='/placeorder'>
-          <button>Check Out</button>
+          <button>{path === '/placeorder' ? 'Place Order':'Check Out'}</button>
         </NavLink>
       </div>
     </div>

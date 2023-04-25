@@ -1,9 +1,9 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, json } from "react-router-dom";
 import Home from "./pages/Home";
 import Mobiles from "./components/categories/Mobiles";
 import { useEffect } from "react";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Header from "./components/Header";
 import Electronics from "./components/categories/Electronics";
 import MensFashion from "./components/categories/MensFashion";
@@ -20,8 +20,8 @@ import ErrorRoutes from "./components/ErrorRoutes";
 import CheckOutPage from "./pages/CheckOutPage";
 function App() {
   const dispatch = useDispatch();
-  /*   const products = useSelector(state => state.product);
-  console.log(products); */
+    const cart = useSelector(state => state.cart);
+  //console.log(cart);
   useEffect(() => {
     async function getData() {
       const res = await axios.get("https://dummyjson.com/products?limit=100");
@@ -32,7 +32,15 @@ function App() {
       });
     }
     getData();
-  });
+    /* if(sessionStorage.getItem('cart') === null|| JSON.parse(sessionStorage.getItem('cart')).length !== 0){
+      const data = JSON.parse(sessionStorage.getItem('cart'))
+      dispatch({
+        type:'SET_CART',
+        payload:data
+      })
+    }
+    sessionStorage.setItem('cart',JSON.stringify(cart)) */
+  },[]);
   return (
     <div className="App">
       <Header />

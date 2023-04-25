@@ -1,21 +1,47 @@
-.checkout--container{
-    width: 90%;
-    margin: 20px auto;
-    .address--container{
-        .basic--details{
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 10px;
-            span{
-                font-size: 1.2rem;
-                color: $text-color-head;
-                font-weight: 600;
-            }
-        }
-        .address{
-            margin-top: 30px;
-            .add--btn{
+.checkout--container {
+  width: 90%;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  .address--container {
+    .basic--details {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      span {
+        font-size: 1.2rem;
+        color: $text-color-head;
+        font-weight: 600;
+      }
+    }
+    .address {
+      margin-top: 30px;
+      .add--btn {
+        background: $btn-bg;
+        color: $bg-color;
+        font-size: 0.9rem;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 0px;
+        cursor: pointer;
+      }
+      .new-address {
+        margin-top: 20px;
+        form {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 20px;
+          input {
+            width: 300px;
+            font-size: 1.1rem;
+            padding: 10px;
+            outline: none;
+          }
+          button {
+            width: 300px;
             background: $btn-bg;
             color: $bg-color;
             font-size: 0.9rem;
@@ -23,39 +49,136 @@
             border: none;
             border-radius: 0px;
             cursor: pointer;
-            }
-            .new-address{
-                margin-top: 20px;
-                form{
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    gap: 20px;
-                    input{
-                        width: 300px;
-                        font-size: 1.1rem;
-                        padding: 10px;
-                        outline: none;
-                    }
-                    button{
-                        width: 300px;
-                        background: $btn-bg;
-                        color: $bg-color;
-                        font-size: 0.9rem;
-                        padding: 10px 20px;
-                        border: none;
-                        border-radius: 0px;
-                        cursor: pointer; 
-                    }
-                }
-            }
-            .address--details{
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
+          }
         }
+      }
+      .address--details {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
     }
+  }
+  .price--container {
+    .bill-container {
+      padding: 20px;
+      h1 {
+        font-size: 1.8rem;
+        text-transform: capitalize;
+        padding: 20px 0;
+        border-bottom: 1px solid $text-color;
+      }
+      .bill--details {
+        margin: 20px 0;
+        @include flex-b-c;
+        gap: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        .price,
+        .discount,
+        .delivery,
+        .total--price {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+      .place--order {
+        button {
+          font-size: 1.2rem;
+          color: $bg-color;
+          font-family: $font-stack-head;
+          background: $btn-bg;
+          border: none;
+          outline: none;
+          padding: 10px 20px;
+          margin: 20px 0;
+        }
+      }
+    }
+  }
+  .cart--product {
+    .cart--items {
+      @include flex-b-c;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 20px;
+      .cart--item {
+        width: inherit;
+        display: flex;
+        justify-content: flex-start;
+        gap: 20px;
+        padding: 20px;
+        border-bottom: 1px solid $text-color;
+      }
+      .first--col {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        .item--image {
+          img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+          }
+        }
+        .item--quantity {
+          @include flex-b-c;
+          gap: 5px;
+          .decrease,
+          .increase {
+            padding: 5px 8px;
+            border-radius: 20px;
+            font-size: 1.2rem;
+            border: 1px solid $text-color;
+            cursor: pointer;
+          }
+          .quantity {
+            padding: 5px 10px;
+            border: 1px solid $text-color;
+            font-size: 1.2rem;
+            font-weight: 600;
+          }
+        }
+      }
+      .sec--col {
+        @include flex-b-c;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-left: 10px;
+        .item--title {
+          .title {
+            font-size: 1.3rem;
+            font-family: $font-stack-head;
+            font-weight: 1000;
+          }
+        }
+        .item--price {
+          @include flex-b-c;
+          gap: 20px;
+          .original--price {
+            text-decoration: line-through;
+            font-weight: 100;
+            color: $light-color;
+          }
+          .dis--price {
+            color: $btn-bg;
+            font-weight: 1000;
+          }
+        }
+        .rm--btn {
+          .remove--product {
+            padding: 5px 20px;
+            font-size: 0.8rem;
+            color: $bg-color;
+            background-color: red;
+            border: none;
+          }
+        }
+      }
+    }
+  }
 }

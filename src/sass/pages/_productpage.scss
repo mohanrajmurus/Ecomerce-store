@@ -61,7 +61,7 @@
           justify-content: space-between;
           align-items: center;
           gap: 20px;
-          button{
+          .btn{
             width: 50%;
             background: $btn-bg;
             color: $bg-color;
@@ -73,6 +73,12 @@
           }
           .remove--button{
             background-color: red;
+          }
+          a{
+            width: 50%;
+            .btn{
+              width: 100%;
+            }
           }
         }
     }
