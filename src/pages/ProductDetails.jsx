@@ -51,10 +51,16 @@ const ProductDetails = () => {
         console.error(error);
       }
     }
-    dispatch({
-      type: "ADD_TO_CART",
-      payload: item,
-    });
+    
+    if(cart.some(prod => prod.id === item.id))
+      return;
+    else{
+      dispatch({
+        type: "ADD_TO_CART",
+        payload: item,
+      });
+    }
+
     //sessionStorage.setItem('cart',JSON.stringify(cart))
   };
   const removeCart = async (item) => {
@@ -94,7 +100,7 @@ const ProductDetails = () => {
           );
 
           return (
-            <div className="single--product--container" key={i}>
+            <div className="single--product--container" key={item.id}>
               <ToastContainer
                 position="top-left"
                 autoClose={1000}
