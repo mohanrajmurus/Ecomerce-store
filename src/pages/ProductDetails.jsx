@@ -73,7 +73,7 @@ const ProductDetails = () => {
         }),{ pending: ' Removing to cart',
         success: 'Sucessfully Removed 👌',
         error: 'Failed 🤯'});
-        console.log(data);
+       // console.log(data);
         if (data) {
           dispatch({
             type: "SET_USER",
@@ -103,14 +103,14 @@ const ProductDetails = () => {
             <div className="single--product--container" key={item.id}>
               <ToastContainer
                 position="top-left"
-                autoClose={1000}
+                autoClose={100}
                 hideProgressBar={false}
                 newestOnTop={false}
                 closeOnClick
                 rtl={false}
-                pauseOnFocusLoss
+                pauseOnFocusLoss={false}
                 draggable
-                pauseOnHover
+                pauseOnHover={false}
                 theme="light"
               />
               <div className="image--container">

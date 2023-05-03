@@ -18,6 +18,7 @@ import PrivateRouters from './components/PrivateRouters'
 import ProductDetails from './pages/ProductDetails'
 import ErrorRoutes from "./components/ErrorRoutes";
 import CheckOutPage from "./pages/CheckOutPage";
+import PaymentPage from './pages/PaymentPage'
 function App() {
   const dispatch = useDispatch();
     const cart = useSelector(state => state.cart);
@@ -48,6 +49,7 @@ function App() {
         <Route element={<PrivateRouters/>}>
           
           <Route path="/placeorder" element={<CheckOutPage/>}/>
+          <Route path="/checkout" element={<PaymentPage />} />
         </Route>
         <Route path="/" element={<Home />} />
         <Route path="/mobile" element={<Mobiles />}/>
