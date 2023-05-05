@@ -62,8 +62,8 @@ function App() {
         <Route path="/automotive" element={<AutoMotive />}/>
         <Route path="/login" element={<LogIn/>}/>
         <Route path="/register" element ={<Register />}/>
-        <Route path="/products/:id" element={<ProductDetails/>}/>
-        <Route path="*" element={<ErrorRoutes/>}/>
+        <Route path="/products/:id" element={<ProductDetails/>} errorElement={<ErrorRoutes/>}/>
+        {/* <Route path="*" element={<ErrorRoutes/>}/> */}
         {/* <Route path="/electronics/:id" element={<ProductDetails/>}/>
         <Route path="/men'sfashion/:id" element={<ProductDetails/>}/>
         <Route path="/women'sfashion/:id" element={<ProductDetails/>}/>

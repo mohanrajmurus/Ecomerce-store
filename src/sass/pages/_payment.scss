@@ -1,0 +1,26 @@
+.paymentpage__container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .paymentpage--wrapper{
+        margin: 20px 30px;
+        .total--price{
+            margin-bottom: 30px;
+            span{
+                font-size: 1.3rem;
+                font-weight: 1000;
+            }
+        }
+        .payment--details__container{
+            display: flex;
+            flex-direction: column;
+            gap: 100px;
+            button{
+                background-color: $btn-bg;
+                border: none;
+                color: $bg-color;
+                font-size: 1.2rem;
+            }
+        }
+    }
+}
